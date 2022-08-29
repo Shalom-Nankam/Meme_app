@@ -3,6 +3,7 @@ import 'package:meme_maker/MVC/controllers/home_controller.dart';
 import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/login_page.dart';
 
+import '../../utils/global_variables.dart';
 import '../views/onboard_view.dart';
 import '../views/sign_up_page.dart';
 
@@ -37,18 +38,16 @@ class OnboardController extends State<OnboardScreen> {
   }
 
   Future<Map<String, dynamic>> createNewUser(
-          String newEmail, String newPassword) =>
-      FirebaseAuthentication.createNewUser(newEmail, newPassword);
+      String newEmail, String newPassword) {
+    FirebaseAuthentication auth = FirebaseAuthentication();
+    return auth.createNewUser(newEmail, newPassword);
+  }
 
-
-
-  // bool rememberPassword = true;
-
-  // setCheck(bool value) {
-  //   setState(() {
-  //     rememberPassword = value;
-  //   });
-  // }
+  setCheck(bool value) {
+    setState(() {
+      showMyPassword = value;
+    });
+  }
 
   void toHomeScreen() {
     Navigator.pushReplacement(

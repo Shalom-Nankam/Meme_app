@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/stateless_view.dart';
 import 'package:meme_maker/widgets/text_field.dart';
 
@@ -75,8 +74,8 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
             SizedBox(
               height: 24.h,
             ),
-            TextForm(
-              control: controller.passwordController,
+            TextForm2(
+              onboard: controller,
               title: 'Password',
               hint: 'Enter Password',
             ),
@@ -90,19 +89,13 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
               height: 50.h,
               minWidth: 380.w,
               onPressed: () {
-                // controller.navigateToLogin();
-
-                FirebaseAuthentication firebaseauth = FirebaseAuthentication();
-
                 controller
                     .createNewUser(controller.emailController.text,
                         controller.passwordController.text)
                     .then((res) {
                   if (res["Status"] == true) {
                     controller.toHomeScreen();
-                  } else {
-                    
-                  }
+                  } else {}
                 });
               },
               child: Text(

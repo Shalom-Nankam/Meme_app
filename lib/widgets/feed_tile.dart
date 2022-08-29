@@ -25,7 +25,7 @@ class FeedTile extends StatelessWidget {
                     Image.asset('assets/images/profile.png', fit: BoxFit.fill),
               ),
             ),
-            title: Text('Border',
+            title: Text('Borderline_User',
                 style: GoogleFonts.mulish(
                   textStyle: TextStyle(
                       color: const Color(

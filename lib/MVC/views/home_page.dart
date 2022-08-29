@@ -18,6 +18,7 @@ class HomePage extends StatelessView<HomeScreen, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

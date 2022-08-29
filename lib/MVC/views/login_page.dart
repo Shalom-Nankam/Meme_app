@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/stateless_view.dart';
 import 'package:meme_maker/widgets/text_field.dart';
 
@@ -59,7 +58,7 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
             SizedBox(
               height: 64.h,
             ),
-             TextForm(
+            TextForm(
               control: controller.usernameController,
               title: 'Username',
               hint: 'Enter Username',
@@ -67,8 +66,9 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
             SizedBox(
               height: 24.h,
             ),
-           TextForm(
-              control: controller.passwordController,
+            TextForm2(
+              onboard: controller,
+              
               title: 'Password',
               hint: 'Enter Password',
             ),
@@ -81,8 +81,7 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
               color: const Color(0xff1d1d1d),
               height: 50.h,
               minWidth: 380.w,
-              onPressed: () {
-              },
+              onPressed: () {},
               child: Text(
                 'Sign In',
                 style: GoogleFonts.mulish(
@@ -108,7 +107,9 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
                   width: 4.w,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    controller.navigateToSignUp();
+                  },
                   child: Text('Sign up',
                       style: GoogleFonts.mulish(
                         fontWeight: FontWeight.w500,

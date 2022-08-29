@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthentication {
 
-  static Future<Map<String, dynamic>> createNewUser(
+ Future<Map<String, dynamic>> createNewUser(
       String email, String password) async {
     try {
       final credential =

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meme_maker/MVC/controllers/onboard_controller.dart';
+import 'package:meme_maker/utils/global_variables.dart';
 
 class TextForm extends StatelessWidget {
-  const TextForm({super.key, required this.title, required this.hint, required this.control});
+  const TextForm(
+      {super.key,
+      required this.title,
+      required this.hint,
+      required this.control});
 
   final TextEditingController control;
   final String title;
@@ -30,6 +37,7 @@ class TextForm extends StatelessWidget {
           height: 50.h,
           width: 380.w,
           child: TextFormField(
+            controller: control,
             style: GoogleFonts.mulish(
               fontStyle: FontStyle.normal,
               textStyle: TextStyle(
@@ -41,7 +49,6 @@ class TextForm extends StatelessWidget {
             ),
             cursorColor: Colors.black,
             decoration: InputDecoration(
-              // suffixIcon: title.toLowerCase() == 'password'? : null,
               hintText: hint,
               hintStyle: GoogleFonts.mulish(
                 fontStyle: FontStyle.normal,
@@ -76,7 +83,13 @@ class TextForm extends StatelessWidget {
 }
 
 class TextForm2 extends StatelessWidget {
-  const TextForm2({super.key, required this.title, required this.hint});
+  const TextForm2(
+      {super.key,
+      required this.title,
+      required this.hint,
+      required this.onboard});
+
+  final OnboardController onboard;
 
   final String title;
   final String hint;
@@ -102,6 +115,8 @@ class TextForm2 extends StatelessWidget {
           height: 50.h,
           width: 380.w,
           child: TextFormField(
+            obscureText: !showMyPassword,
+            controller: onboard.passwordController,
             style: GoogleFonts.mulish(
               fontStyle: FontStyle.normal,
               textStyle: TextStyle(
@@ -113,7 +128,11 @@ class TextForm2 extends StatelessWidget {
             ),
             cursorColor: Colors.black,
             decoration: InputDecoration(
-              // suffixIcon: title.toLowerCase() == 'password'? : null,
+              suffixIcon: GestureDetector(
+                // onTap: onboard.setCheck(!showMyPassword),
+                child: SvgPicture.asset('assets/images/hide.svg',
+                    height: 15.h, width: 18.w, fit: BoxFit.scaleDown),
+              ),
               hintText: hint,
               hintStyle: GoogleFonts.mulish(
                 fontStyle: FontStyle.normal,
