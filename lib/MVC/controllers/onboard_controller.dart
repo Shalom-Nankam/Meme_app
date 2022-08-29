@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meme_maker/MVC/controllers/home_controller.dart';
+import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/login_page.dart';
 
 import '../views/onboard_view.dart';
@@ -13,6 +14,9 @@ class OnboardScreen extends StatefulWidget {
 }
 
 class OnboardController extends State<OnboardScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   // final formkey1 = GlobalKey<FormState>();
   // final formkey2 = GlobalKey<FormState>();
 
@@ -31,6 +35,12 @@ class OnboardController extends State<OnboardScreen> {
           builder: (context) => LoginPage(this),
         ));
   }
+
+  Future<Map<String, dynamic>> createNewUser(
+          String newEmail, String newPassword) =>
+      FirebaseAuthentication.createNewUser(newEmail, newPassword);
+
+
 
   // bool rememberPassword = true;
 

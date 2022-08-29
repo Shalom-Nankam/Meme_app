@@ -72,14 +72,16 @@ class EditMeme extends StatelessView<HomeScreen, HomeController> {
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TextForm(
+                   TextForm(
+                    control: controller.captionController,
                     title: 'Add Caption',
                     hint: 'Enter Caption',
                   ),
                   SizedBox(
                     height: 24.h,
                   ),
-                  const TextForm(
+                   TextForm(
+                    control: controller.tagController,
                     title: 'Select Tags',
                     hint: 'Enter Tags',
                   ),

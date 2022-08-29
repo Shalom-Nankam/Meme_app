@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextForm extends StatelessWidget {
-  const TextForm({super.key, required this.title, required this.hint});
+  const TextForm({super.key, required this.title, required this.hint, required this.control});
 
+  final TextEditingController control;
   final String title;
   final String hint;
   @override

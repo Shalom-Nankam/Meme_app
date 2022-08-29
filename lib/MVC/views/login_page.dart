@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/stateless_view.dart';
 import 'package:meme_maker/widgets/text_field.dart';
 
@@ -58,14 +59,16 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
             SizedBox(
               height: 64.h,
             ),
-            const TextForm(
+             TextForm(
+              control: controller.usernameController,
               title: 'Username',
               hint: 'Enter Username',
             ),
             SizedBox(
               height: 24.h,
             ),
-            const TextForm(
+           TextForm(
+              control: controller.passwordController,
               title: 'Password',
               hint: 'Enter Password',
             ),
@@ -79,7 +82,6 @@ class LoginPage extends StatelessView<OnboardScreen, OnboardController> {
               height: 50.h,
               minWidth: 380.w,
               onPressed: () {
-                controller.toHomeScreen();
               },
               child: Text(
                 'Sign In',

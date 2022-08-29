@@ -13,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeController extends State<HomeScreen> {
+   TextEditingController captionController = TextEditingController();
+  TextEditingController tagController = TextEditingController();
   // final formkey1 = GlobalKey<FormState>();
   // final formkey2 = GlobalKey<FormState>();
 

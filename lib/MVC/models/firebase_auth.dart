@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthentication {
-  Future<Map<String, dynamic>> createNewUser(
+
+  static Future<Map<String, dynamic>> createNewUser(
       String email, String password) async {
     try {
       final credential =
@@ -13,7 +14,6 @@ class FirebaseAuthentication {
       );
 
       if (credential.user != null) {
-        print(credential.user);
         return {
           "Status": true,
         };
@@ -21,7 +21,6 @@ class FirebaseAuthentication {
       return {"Status": false, "Message": 'An error occured'};
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
         return {
           "Status": false,
           "Message": 'The password provided is too weak.'
@@ -35,5 +34,18 @@ class FirebaseAuthentication {
     } catch (e) {
       return {"Status": false, "Message": 'An error occured'};
     }
+  }
+
+  Future loginUser(
+      {required String userEmail, required String userPassword}) async {
+    try {
+      FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: userEmail, password: userPassword)
+          .then((value) {
+        print(value);
+      });
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+    } on SocketException catch (_) {}
   }
 }

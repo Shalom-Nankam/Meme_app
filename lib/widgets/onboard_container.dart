@@ -73,8 +73,11 @@ class OnboardBottom extends StatelessView<OnboardScreen, OnboardController> {
                     fontWeight: FontWeight.w400,
                     fontSize: 14.sp,
                   )),
-              TextButton(
-                onPressed: () {},
+              SizedBox(
+                width: 2.w,
+              ),
+              GestureDetector(
+                onTap: () {},
                 child: Text(
                   'Terms of Service',
                   style: GoogleFonts.mulish(

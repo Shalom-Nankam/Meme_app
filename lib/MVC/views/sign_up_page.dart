@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meme_maker/MVC/models/firebase_auth.dart';
 import 'package:meme_maker/MVC/views/stateless_view.dart';
 import 'package:meme_maker/widgets/text_field.dart';
 
@@ -58,21 +59,24 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
             SizedBox(
               height: 64.h,
             ),
-            const TextForm(
+            TextForm(
+              control: controller.emailController,
               title: 'Email',
               hint: 'Enter Email',
             ),
             SizedBox(
               height: 24.h,
             ),
-            const TextForm(
+            TextForm(
+              control: controller.usernameController,
               title: 'Username',
               hint: 'Enter Username',
             ),
             SizedBox(
               height: 24.h,
             ),
-            const TextForm(
+            TextForm(
+              control: controller.passwordController,
               title: 'Password',
               hint: 'Enter Password',
             ),
@@ -88,17 +92,18 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
               onPressed: () {
                 // controller.navigateToLogin();
 
-                // FirebaseAuthentication firebaseauth = FirebaseAuthentication();
+                FirebaseAuthentication firebaseauth = FirebaseAuthentication();
 
-                // firebaseauth
-                //     .createNewUser("123@gmail.com", "testing")
-                //     .then((res) {
-
-                //   if (res["Status"] == true) {
-                //   } else {
-                //     print(res["Message"]);
-                //   }
-                // });
+                controller
+                    .createNewUser(controller.emailController.text,
+                        controller.passwordController.text)
+                    .then((res) {
+                  if (res["Status"] == true) {
+                    controller.toHomeScreen();
+                  } else {
+                    
+                  }
+                });
               },
               child: Text(
                 'Sign Up',
@@ -125,7 +130,9 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
                   width: 4.w,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    controller.navigateToLogin();
+                  },
                   child: Text('Sign in',
                       style: GoogleFonts.mulish(
                         fontWeight: FontWeight.w500,
