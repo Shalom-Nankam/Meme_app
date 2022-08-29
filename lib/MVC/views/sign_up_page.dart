@@ -86,7 +86,19 @@ class SignUp extends StatelessView<OnboardScreen, OnboardController> {
               height: 50.h,
               minWidth: 380.w,
               onPressed: () {
-                controller.navigateToLogin();
+                // controller.navigateToLogin();
+
+                // FirebaseAuthentication firebaseauth = FirebaseAuthentication();
+
+                // firebaseauth
+                //     .createNewUser("123@gmail.com", "testing")
+                //     .then((res) {
+
+                //   if (res["Status"] == true) {
+                //   } else {
+                //     print(res["Message"]);
+                //   }
+                // });
               },
               child: Text(
                 'Sign Up',
